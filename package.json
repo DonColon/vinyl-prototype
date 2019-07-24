@@ -1,0 +1,46 @@
+{
+    "name": "vinyl",
+    "version": "1.0.0",
+    "description": "My own music player webapp",
+    "keywords": [
+        "music",
+        "music-player",
+        "vinyl-records",
+        "webapp"
+    ],
+    "author": {
+        "name": "Dardan Rrafshi",
+        "email": "drrafshi@hotmail.de",
+        "url": "https://github.com/DonColon"
+    },
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/DonColon/vinyl#readme",
+    "bugs": {
+        "url": "https://github.com/DonColon/vinyl/issues",
+        "email": "drrafshi@hotmail.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DonColon/vinyl.git"
+    },
+    "main": "src/main/scripts/main.js",
+    "browser": "dist/js/bundle.min.js",
+    "scripts": {
+        "clean": "shx rm -rf dist",
+        "postclean": "shx mkdir dist",
+        "prebuild": "npm run clean",
+        "build": "gulp"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "gulp": "^4.0.2",
+        "gulp-babel": "^8.0.0",
+        "gulp-clean-css": "^4.2.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-rollup": "^2.16.2",
+        "gulp-sass": "^4.0.2",
+        "gulp-uglify": "^3.0.2",
+        "shx": "^0.3.2"
+    }
+}
