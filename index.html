@@ -7,22 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <meta name="author" content="Dardan Rrafshi" />
-    <meta name="description" content="A prototype for my own music player" />
-    <meta name="keywords" content="music, songs, artists, albums, playlists, music player" />
+    <meta name="description" content="My own music player webapp" />
+    <meta name="keywords" content="music, music-player, vinyl-records, webapp" />
 
     <title>Vinyl - Home</title>
 
+    <!-- Set logo of website -->
     <link rel="icon" type="image/png" href="/resources/images/favicon.png" sizes="32x32" />
+
+    <!-- Material Design Icons CSS -->
+    <link rel="stylesheet" href="/node_modules/@mdi/font/css/materialdesignicons.min.css" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- Own styles -->
     <link rel="stylesheet" href="/dist/css/styles.css" />
 </head>
 
 <body>
-    <h1 id="playlistTitle">Hello World!</h1>
+    <h1 id="playlistTitle">Hello World! <span class="mdi mdi-library-music"></span></h1>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Own Scripts -->
-    <script type="module" src="dist/js/bundle.min.js"></script>
+    <script src="/dist/js/bundle.min.js"></script>
 </body>
 
 </html>
