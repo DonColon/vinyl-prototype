@@ -20,7 +20,7 @@ function css()
 
 function javascript()
 {
-    return src('src/main/scripts/**/*.js')
+    return src(['src/main/scripts/**/*.js', 'application.config.js'])
         .pipe(rollup({
             input: 'src/main/scripts/main.js',
             output: {
