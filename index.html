@@ -26,7 +26,29 @@
 </head>
 
 <body>
-    <h1 id="playlistTitle">Hello World! <span class="mdi mdi-library-music"></span></h1>
+    <div class="container">
+        <h1 class="mt-4 mb-3">Vinyl</h1>
+
+        <div class="card w-75">
+            <div class="card-header text-center">
+                <h4 class="mt-4 mb-3" id="playlistTitle"></h4>
+                <h5 class="card-subtitle mb-2 text-muted" id="playlistInfo"></h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" id="songTitle"></h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="songInfo"></h6>
+            </div>
+            <div class="card-footer text-center">
+                <span class="mdi mdi-skip-previous mdi-36px" id="previousSong"></span>
+
+                <span class="mdi mdi-play-circle mdi-36px" id="playButton"></span>
+
+                <span class="mdi mdi-pause-circle mdi-36px" style="display: none" id="pauseButton"></span>
+
+                <span class="mdi mdi-skip-next mdi-36px" id="nextSong"></span>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
