@@ -1,0 +1,41 @@
+{
+    "name": "Winter Wonder",
+    "creationDate": "03.02.2019 15:41",
+    "owner": {
+        "firstname": "Dardan",
+        "familyname": "Rrafshi",
+        "username": "DonColon",
+        "email": "drrafshi@hotmail.de",
+        "password": "1234"
+    },
+    "songs": [
+        {
+            "track": "5",
+            "title": "Time Bomb",
+            "artist": "All Time Low",
+            "album": "Dirty Work",
+            "year": "2012",
+            "genre": "Pop",
+            "filepath": "./resources/audio/time-bomb.mp3"
+        },
+        {
+            "track": "1",
+            "title": "Weightless",
+            "artist": "All Time Low",
+            "album": "Nothing Personal",
+            "year": "2009",
+            "genre": "Pop",
+            "filepath": "./resources/audio/weightless.mp3"
+        },
+        {
+            "track": "3",
+            "title": "Somethings Gotta Give",
+            "artist": "All Time Low",
+            "album": "Future Hearts",
+            "year": "2015",
+            "genre": "Pop",
+            "filepath": "./resources/audio/somethings-gotta-give.mp3"
+        }
+    ],
+    "visibility": true
+}
