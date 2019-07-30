@@ -24,7 +24,6 @@ class MusicPlayer
 
         song.howl = new Howl({
             src: [song.filepath],
-            html5: true,
             onend: () => self.skip('next')
         });
 

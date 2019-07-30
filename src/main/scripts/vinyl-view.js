@@ -45,8 +45,6 @@ class VinylView extends EventDispatcher
         const song = (typeof index === 'number') ?
             this.playlist.songs[index] : this.playlist.songs[this.playlist.selectedIndex];
 
-        console.log(song);
-
         this.components.playlistTitle.innerHTML = this.playlist.name;
         this.components.playlistInfo.innerHTML = this.playlist.owner.username;
 
