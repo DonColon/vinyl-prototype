@@ -3,7 +3,28 @@
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
 /*************************************************************************************/
-@import 'fonts';
-@import 'colors';
-@import 'basics';
-@import 'components';
+.menu-container {
+    padding: 1em;
+    background-color: $background-color-2;
+
+    .menu {
+        margin-bottom: 1em;
+
+        .menu-title {
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .menu-item a {
+            color: $text-color-medium;
+            border-bottom: none;
+
+            &:hover {
+                color: $text-color-high;
+            }
+        }
+    }
+}

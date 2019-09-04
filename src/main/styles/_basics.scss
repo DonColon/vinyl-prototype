@@ -1,0 +1,92 @@
+/*************************************************************************************/
+/* Vinyl - My own web music player                                                   */
+/* Copyright 2019 Dardan Rrafshi                                                     */
+/* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
+/*************************************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    line-height: 1.8em;
+    background-color: $background-color-0;
+    color: $text-color-medium;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto Slab', sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: $primary-color;
+    border-bottom: dashed 1px $primary-color;
+    text-decoration: none;
+
+    &:hover {
+        color: $primary-color-light;
+        border-bottom: solid 1px $primary-color-light;
+    }
+
+    &:visited {
+        color: $primary-color-dark;
+        border-bottom: dashed 1px $primary-color-dark;
+    }
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.8em;
+    white-space: nowrap;
+}
+
+th {
+    font-family: 'Roboto Slab', sans-serif;
+    text-transform: uppercase;
+}
+
+thead tr {
+    background-color: $background-color-2;
+}
+
+tbody tr {
+    &:nth-child(even) {
+        background-color: $background-color-2;
+    }
+
+    &:nth-child(odd) {
+        background-color: $background-color-1;
+    }
+
+    &:hover {
+        background-color: $background-color-5;
+    }
+}

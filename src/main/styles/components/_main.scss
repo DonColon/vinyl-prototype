@@ -3,7 +3,14 @@
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
 /*************************************************************************************/
-@import 'fonts';
-@import 'colors';
-@import 'basics';
-@import 'components';
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+}

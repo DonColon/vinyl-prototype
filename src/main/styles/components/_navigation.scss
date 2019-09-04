@@ -1,0 +1,59 @@
+/*************************************************************************************/
+/* Vinyl - My own web music player                                                   */
+/* Copyright 2019 Dardan Rrafshi                                                     */
+/* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
+/*************************************************************************************/
+.navigation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: $background-color-1;
+
+    .navigation-brand {
+        display: inline-block;
+        font-size: 1.5em;
+        font-family: 'Roboto Slab', sans-serif;
+        white-space: nowrap;
+        color: $text-color-high;
+        border-bottom: none;
+
+        .brand-logo {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+
+        .nav-item {
+            margin: 0 0.5em;
+        }
+
+        .nav-link {
+            color: $text-color-medium;
+            border-bottom: none;
+
+            &:hover {
+                color: $text-color-high;
+            }
+        }
+    }
+
+    .navigation-scroll {
+        max-width: 100%;
+        height: 2em;
+        margin-top: 0.5em;
+        overflow: hidden;
+
+        .navigation {
+            padding-bottom: 2em;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    }
+}

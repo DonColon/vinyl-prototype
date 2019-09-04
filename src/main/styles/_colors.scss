@@ -1,0 +1,27 @@
+/*************************************************************************************/
+/* Vinyl - My own web music player                                                   */
+/* Copyright 2019 Dardan Rrafshi                                                     */
+/* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
+/*************************************************************************************/
+$primary-color: rgb(255, 211, 0);
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 5%);
+
+$secondary-color: rgb(195, 176, 145);
+$secondary-color-light: lighten($secondary-color, 15%);
+$secondary-color-dark: darken($secondary-color, 5%);
+
+$text-color-high: rgba(255, 255, 255, 0.87);
+$text-color-medium: rgba(255, 255, 255, 0.6);
+$text-color-low: rgba(255, 255, 255, 0.38);
+
+$background-color-0: rgb(18, 18, 18);
+$background-color-1: rgba(255, 255, 255, 0.05);
+$background-color-2: rgba(255, 255, 255, 0.07);
+$background-color-3: rgba(255, 255, 255, 0.08);
+$background-color-4: rgba(255, 255, 255, 0.09);
+$background-color-5: rgba(255, 255, 255, 0.11);
+$background-color-6: rgba(255, 255, 255, 0.12);
+$background-color-7: rgba(255, 255, 255, 0.14);
+$background-color-8: rgba(255, 255, 255, 0.15);
+$background-color-9: rgba(255, 255, 255, 0.16);
