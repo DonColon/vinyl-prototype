@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <meta name="author" content="Dardan Rrafshi" />
     <meta name="description" content="My own music player webapp" />
@@ -18,42 +18,140 @@
     <!-- Material Design Icons CSS -->
     <link rel="stylesheet" href="/node_modules/@mdi/font/css/materialdesignicons.min.css" />
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
     <!-- Own styles -->
-    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <link rel="stylesheet" href="/dist/css/styles.min.css" />
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="mt-4 mb-3">Vinyl</h1>
-
-        <div class="card w-75">
-            <div class="card-header text-center">
-                <h4 class="mt-4 mb-3" id="playlistTitle"></h4>
-                <h5 class="card-subtitle mb-2 text-muted" id="playlistInfo"></h5>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title" id="songTitle"></h5>
-                <h6 class="card-subtitle mb-2 text-muted" id="songInfo"></h6>
-            </div>
-            <div class="card-footer text-center">
-                <span class="mdi mdi-skip-previous mdi-36px" id="previousSong"></span>
-
-                <span class="mdi mdi-play-circle mdi-36px" id="playButton"></span>
-
-                <span class="mdi mdi-pause-circle mdi-36px" style="display: none" id="pauseButton"></span>
-
-                <span class="mdi mdi-skip-next mdi-36px" id="nextSong"></span>
-            </div>
+    <nav class="navigation-container">
+        <a class="navigation-brand" href="#">
+            <img class="brand-logo" src="/resources/images/favicon.png" alt="the vinyl music player logo" />
+            Vinyl
+        </a>
+        <div class="navigation-scroll">
+            <ul class="navigation">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="mdi mdi-settings"> Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="mdi mdi-equalizer"> Equalizer</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="mdi mdi-timer"> Sleep Timer</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="mdi mdi-account-circle"> Dardan Rrafshi</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/popper.js/dist/popper.min.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <aside class="menu-container">
+        <section class="menu">
+            <h4 class="menu-title">Library</h4>
+            <ul>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="mdi mdi-artist"> Artist</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="mdi mdi-album"> Album</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="mdi mdi-music"> Genre</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="menu">
+            <h4 class="menu-title">Playlist</h4>
+            <ul>
+                <li class="menu-item">
+                    <a href="#">
+                        Winter Wonder
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        Summer Sanctuary
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+
+    <main class="main-container">
+        <h1>Winter Wonder</h1>
+        <p>Created by DonColon</p>
+        <p>5 Songs</p>
+        <p>Duration: 1:30 h</p>
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Somethings Gotta Give</td>
+                        <td>All Time Low</td>
+                        <td>Future Hearts</td>
+                        <td>3:30</td>
+                    </tr>
+                    <tr>
+                        <td>Somethings Gotta Give</td>
+                        <td>All Time Low</td>
+                        <td>Future Hearts</td>
+                        <td>3:30</td>
+                    </tr>
+                    <tr>
+                        <td>Somethings Gotta Give</td>
+                        <td>All Time Low</td>
+                        <td>Future Hearts</td>
+                        <td>3:30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="">
+            <span>0:00</span>
+            <input type="range" name="seek" min="0" max="230" value="0" />
+            <span>3:00</span>
+        </div>
+        <div class="">
+            <span class="mdi mdi-36px mdi-skip-backward"></span>
+            <span class="mdi mdi-36px mdi-skip-previous"></span>
+            <span class="mdi mdi-36px mdi-pause-circle-outline"></span>
+            <span class="mdi mdi-36px mdi-play-circle-outline"></span>
+            <span class="mdi mdi-36px mdi-skip-next"></span>
+            <span class="mdi mdi-36px mdi-skip-forward"></span>
+        </div>
+        <div class="">
+            <span class="mdi mdi-36px mdi-volume-high"></span>
+            <input type="range" name="volume" min="0" max="1" value="0.5" />
+        </div>
+    </footer>
 
     <!-- HowlerJS Core -->
     <script src="/node_modules/howler/dist/howler.min.js"></script>
