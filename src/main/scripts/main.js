@@ -3,7 +3,9 @@
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
 /*************************************************************************************/
-import config from '../../../application.config.js';
+import './components/components.js';
+
+import config from '../../../application.config.json';
 
 import Playlist from './playlist.js';
 import VinylView from './vinyl-view.js';
