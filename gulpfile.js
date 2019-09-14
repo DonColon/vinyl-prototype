@@ -1,10 +1,14 @@
 const { src, dest, parallel } = require('gulp'),
     sass = require('gulp-sass'),
     minify = require('gulp-clean-css'),
-    rollup = require('gulp-rollup'),
+    rollup = require('gulp-better-rollup'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    importJson = require('rollup-plugin-json'),
+    importHtml = require('rollup-plugin-html'),
+    importStyles = require('@atomico/rollup-plugin-import-css');
+
 
 function css()
 {
@@ -20,13 +24,16 @@ function css()
 
 function javascript()
 {
-    return src(['src/main/scripts/**/*.js', 'application.config.js'])
+    return src(['src/main/scripts/**/*.js'])
         .pipe(rollup({
-            input: 'src/main/scripts/main.js',
-            output: {
-                file: 'dist/js/bundle.js',
-                format: 'iife',
-            },
+            plugins: [
+                importJson(),
+                importHtml(), 
+                importStyles()
+            ]
+        }, {
+            file: 'dist/js/bundle.js',
+            format: 'iife'
         }))
         .pipe(babel({
             presets: [
@@ -40,6 +47,7 @@ function javascript()
         }))
         .pipe(dest('dist/js/'));
 }
+
 
 exports.css = css;
 exports.javascript = javascript;
