@@ -19,7 +19,7 @@ import MusicPlayer from './music-player.js';
     for(const element of elements)
         components[element.id] = element;
 
-    fetch('./resources/playlist.json')
+    fetch('../resources/playlist.json')
         .then(response => response.json())
         .then(playlistInfo => {
             const playlist = new Playlist(playlistInfo);
