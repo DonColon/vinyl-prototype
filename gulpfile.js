@@ -5,7 +5,8 @@ const { src, dest, parallel } = require('gulp'),
     rollup = require('gulp-better-rollup'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    newer = require('gulp-newer');
 
 const importJson = require('rollup-plugin-json'),
     importHtml = require('rollup-plugin-html'),
@@ -17,18 +18,21 @@ const package = require('./package.json');
 function audio()
 {
     return src(package.sourcePath.audio + '*')
-    .pipe(dest(package.destinationPath.audio));
+        .pipe(newer(package.destinationPath.audio))
+        .pipe(dest(package.destinationPath.audio));
 }
 
 function fonts()
 {
     return src(package.sourcePath.fonts + '*')
+        .pipe(newer(package.destinationPath.fonts))
         .pipe(dest(package.destinationPath.fonts));
 }
 
 function images()
 {
     return src(package.sourcePath.images + '*')
+        .pipe(newer(package.destinationPath.images))
         .pipe(imagemin())
         .pipe(dest(package.destinationPath.images));
 }
@@ -36,6 +40,7 @@ function images()
 function css()
 {
     return src(package.sourcePath.styles + '**/*.scss')
+        .pipe(newer(package.destinationPath.styles))
         .pipe(sass())
         .pipe(minify())
         .pipe(rename({
@@ -48,6 +53,7 @@ function css()
 function javascript()
 {
     return src(package.sourcePath.scripts + '**/*.js')
+        .pipe(newer(package.destinationPath.scripts))
         .pipe(rollup({
             plugins: [
                 importJson(),

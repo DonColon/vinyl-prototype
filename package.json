@@ -36,11 +36,11 @@
         "images": "src/main/resources/images/"
     },
     "destinationPath": {
-        "scripts": "dist/js/",
-        "styles": "dist/css/",
-        "audio": "dist/audio/",
-        "fonts": "dist/fonts/",
-        "images": "dist/images/"
+        "scripts": "dist/js",
+        "styles": "dist/css",
+        "audio": "dist/audio",
+        "fonts": "dist/fonts",
+        "images": "dist/images"
     },
     "devDependencies": {
         "@atomico/rollup-plugin-import-css": "^1.0.3",
@@ -52,6 +52,7 @@
         "gulp-better-rollup": "^4.0.1",
         "gulp-clean-css": "^4.2.0",
         "gulp-imagemin": "^6.1.0",
+        "gulp-newer": "^1.4.0",
         "gulp-rename": "^1.4.0",
         "gulp-sass": "^4.0.2",
         "gulp-uglify": "^3.0.2",
