@@ -1,3 +1,4 @@
+/* ############################## Gulp Plugins ##################################### */
 const { src, dest, parallel } = require('gulp'),
     imagemin = require('gulp-imagemin'),
     sass = require('gulp-sass'),
@@ -8,52 +9,55 @@ const { src, dest, parallel } = require('gulp'),
     rename = require('gulp-rename'),
     newer = require('gulp-newer');
 
+/* ############################## Rollup Plugins ################################### */
 const importJson = require('rollup-plugin-json'),
     importHtml = require('rollup-plugin-html'),
     importStyles = require('@atomico/rollup-plugin-import-css');
 
-const package = require('./package.json');
+/* ############################## Package Information ############################## */
+const {sourcePath, destinationPath} = require('./package.json');
 
 
+/* ############################## Gulp Tasks ####################################### */
 function audio()
 {
-    return src(package.sourcePath.audio + '*')
-        .pipe(newer(package.destinationPath.audio))
-        .pipe(dest(package.destinationPath.audio));
+    return src(sourcePath.audio + '*')
+        .pipe(newer(destinationPath.audio))
+        .pipe(dest(destinationPath.audio));
 }
 
 function fonts()
 {
-    return src(package.sourcePath.fonts + '*')
-        .pipe(newer(package.destinationPath.fonts))
-        .pipe(dest(package.destinationPath.fonts));
+    return src(sourcePath.fonts + '*')
+        .pipe(newer(destinationPath.fonts))
+        .pipe(dest(destinationPath.fonts));
 }
 
 function images()
 {
-    return src(package.sourcePath.images + '*')
-        .pipe(newer(package.destinationPath.images))
+    return src(sourcePath.images + '*')
+        .pipe(newer(destinationPath.images))
         .pipe(imagemin())
-        .pipe(dest(package.destinationPath.images));
+        .pipe(dest(destinationPath.images));
 }
 
 function css()
 {
-    return src(package.sourcePath.styles + '**/*.scss')
-        .pipe(newer(package.destinationPath.styles))
+    return src(sourcePath.styles + '**/*.scss')
+        .pipe(newer(destinationPath.styles))
         .pipe(sass())
         .pipe(minify())
         .pipe(rename({
             basename: 'styles',
             extname: '.min.css'
         }))
-        .pipe(dest(package.destinationPath.styles));
+        .pipe(dest(destinationPath.styles));
 }
 
 function javascript()
 {
-    return src(package.sourcePath.scripts + '**/*.js')
-        .pipe(newer(package.destinationPath.scripts))
+    return src(sourcePath.scripts + '**/*.js')
+        .pipe(newer(destinationPath.scripts))
         .pipe(rollup({
             plugins: [
                 importJson(),
@@ -61,7 +65,7 @@ function javascript()
                 importStyles()
             ]
         }, {
-            file: package.destinationPath.scripts + 'bundle.js',
+            file: destinationPath.scripts + 'bundle.js',
             format: 'iife'
         }))
         .pipe(babel({
@@ -74,13 +78,16 @@ function javascript()
             basename: 'bundle',
             extname: '.min.js'
         }))
-        .pipe(dest(package.destinationPath.scripts));
+        .pipe(dest(destinationPath.scripts));
 }
 
+
+/* ############################## Gulp Task Exports ################################ */
+exports.default = parallel(audio, fonts, images, css, javascript);
 
 exports.audio = audio;
 exports.fonts = fonts
 exports.images = images;
+
 exports.css = css;
 exports.javascript = javascript;
-exports.default = parallel(audio, fonts, images, css, javascript);

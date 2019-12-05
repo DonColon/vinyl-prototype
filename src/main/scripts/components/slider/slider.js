@@ -7,70 +7,88 @@ import content from './slider.html';
 import style from './slider.css';
 
 
-class Slider extends HTMLElement
+class VanillaSlider extends HTMLElement
 {
-    static get observedAttributes()
-    {
-        return ['min', 'max', 'step', 'value', 'orientation'];
-    }
+	static get observedAttributes() 
+	{
+		return ['min', 'max', 'step', 'value', 'orientation', 'showRange'];
+	}
 
-    constructor()
-    {
-        super();
-    }
+	constructor()
+	{
+		super();
+		if(!this.shadowRoot) {
+			this.attachShadow({mode: 'open'});
+			this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    connectedCallback()
-    {
-        if(!this.shadowRoot) {
-            this.attachShadow({mode: 'open'});
-            this.shadowRoot.appendChild(template.content.cloneNode(true));
+			this.min = Number(this.getAttribute('min')) || 0;
+			this.max = Number(this.getAttribute('max')) || 100;
+			this.step = Number(this.getAttribute('step')) || 1;
+			this.value = Number(this.getAttribute('value')) || 0;
+			this.orientation = this.getAttribute('orientation') || 'horizontal';
+			this.showRange = (this.getAttribute('showRange') == 'true') ? true : false;
+		}
+	}
 
-            this.sliderRange = this.shadowRoot.getElementById('slider-range');
-            this.sliderHandle = this.shadowRoot.getElementById('slider-handle');
+	connectedCallback()
+	{
+		this.sliderLine = this.shadowRoot.getElementById('slider-line');
+		this.sliderRange = this.shadowRoot.getElementById('slider-range');
+		this.sliderHandle = this.shadowRoot.getElementById('slider-handle');
 
-            this.min = this.getAttribute('min') || 0;
-            this.max = this.getAttribute('max') || 100;
-            this.step = this.getAttribute('step') || 1;
-            this.value = this.getAttribute('value') || 0;
-            this.orientation = this.getAttribute('orientation') || 'horizontal';
+		this.slideTo((100 / this.max) * this.value);
 
-            this.classList.add(`slider-${this.orientation}`);
-            this.addEventListener('mousedown', this.startSlide, false);
-            this.addEventListener('mouseup', this.stopSlide, false);
-        }
-    }
+		this.addEventListener('mousemove', this.slide.bind(this));
+		this.sliderHandle.addEventListener('mousedown', this.startSlide.bind(this));
+		this.ownerDocument.addEventListener('mouseup', this.stopSlide.bind(this));
+	}
 
-    attributeChangedCallback(name, oldValue, newValue)
-    {
-        this[name] = newValue;
-    }
+	attributeChangedCallback(name, oldValue, newValue)
+	{
+		this[name] = newValue;
+	}
 
-    startSlide(event)
-    {
-        const percentage = ((((event.clientX - this.offsetLeft) / this.offsetWidth)).toFixed(2));
-        this.addEventListener('mousemove', this.moveSlide, false);
-        this.sliderRange.style.width = (percentage * 100) + '%';
-        this.sliderHandle.style.left = (percentage * 100) + '%';
-    }
+	disconnectedCallback()
+	{
+		this.removeEventListener('mousemove', this.slide);
+		this.sliderHandle.removeEventListener('mousedown', this.startSlide);
+		this.ownerDocument.removeEventListener('mouseup', this.stopSlide);
+	}
 
-    stopSlide(event)
-    {
-        const percentage = ((((event.clientX - this.offsetLeft) / this.offsetWidth)).toFixed(2));
-        this.removeEventListener('mousemove', this.moveSlide, false);
-        this.sliderRange.style.width = (percentage * 100) + '%';
-        this.sliderHandle.style.left = (percentage * 100) + '%';
-    }
+	slide(event)
+	{
+		if(this.isSliding) {
+			const ratio = (event.pageX - this.sliderLine.offsetLeft) / (this.sliderLine.offsetWidth),
+				percentage = ratio.toFixed(2) * 100,
+				value = Number(this.max) * ratio + Number(this.min);
 
-    moveSlide(event)
-    {
-        const percentage = ((((event.clientX - this.offsetLeft) / this.offsetWidth)).toFixed(2));
-        this.sliderRange.style.width = (percentage * 100) + '%';
-        this.sliderHandle.style.left = (percentage * 100) + '%';
-    }
+			if(percentage >= 0 && percentage < 100) {
+				this.slideTo(percentage);
+				this.value = value;
+			}
+		}
+	}
+
+	slideTo(percentage)
+	{
+		this.sliderHandle.style.left = `${percentage}%`;
+		if(this.showRange)
+			this.sliderRange.style.width = `${percentage}%`;
+	}
+
+	startSlide()
+	{
+		this.isSliding = true;
+	}
+
+	stopSlide()
+	{
+		this.isSliding = false;
+	}
 }
 
 
 const template = document.createElement('template');
 template.innerHTML = `<style>${style}</style>${content}`;
 
-customElements.define('vanilla-slider', Slider);
+customElements.define('vanilla-slider', VanillaSlider);

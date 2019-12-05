@@ -1,59 +1,30 @@
 :host {
-    display: block;
-    position: relative;
-    text-align: left;
-    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    height: 30px;
 }
 
-:host .slider-handle {
-    position: absolute;
-    z-index: 2;
-    width: 1em;
-    height: 1em;
-    cursor: pointer;
-    border-radius: 15px;
-    -ms-touch-action: none;
-    touch-action: none;
-    background-color: rgb(255, 255, 255);
-}
-
-:host .slider-range {
-    position: absolute;
-    z-index: 1;
-    font-size: .4em;
-    display: block;
-    border-radius: 15px;
-    border: 0;
-    background-position: 0 0;
-    background-color: rgb(32, 64, 122);
-}
-
-.slider-horizontal {
-    height: .5em;
-}
-
-.slider-horizontal .slider-handle {
-    top: -.3em;
-    margin-left: -.6em;
-}
-
-.slider-horizontal .slider-range {
-    top: 0;
-    height: 100%;
-}
-
-.slider-vertical {
-    width: .8em;
-    height: 100px;
-}
-
-.slider-vertical .slider-handle {
-    left: -.3em;
-    margin-left: 0;
-    margin-bottom: -.6em;
-}
-
-.slider-vertical .slider-range {
-    left: 0;
+.slider-line {
     width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: rgb(195, 176, 145);;
+    z-index: 0;
+}
+
+.slider-range {
+    position: absolute;
+    height: 3px;
+    border-radius: 3px;
+    background-color: rgb(255, 211, 0);
+    z-index: 1;
+}
+
+.slider-handle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: rgb(255, 211, 0);
+    z-index: 2;
 }
