@@ -56,17 +56,21 @@ function css()
 
 function javascript()
 {
-    return src(sourcePath.scripts + '**/*.js')
-        .pipe(newer(destinationPath.scripts))
+    return src(sourcePath.js + 'main.js')
+        .pipe(newer(destinationPath.js))
         .pipe(rollup({
+            external: ['howler'],
             plugins: [
                 importJson(),
                 importHtml(), 
                 importStyles()
             ]
         }, {
-            file: destinationPath.scripts + 'bundle.js',
-            format: 'iife'
+            file: destinationPath.js + 'bundle.js',
+            format: 'iife',
+            globals: {
+                'howler': 'Howler'
+            },
         }))
         .pipe(babel({
             presets: [
@@ -78,7 +82,7 @@ function javascript()
             basename: 'bundle',
             extname: '.min.js'
         }))
-        .pipe(dest(destinationPath.scripts));
+        .pipe(dest(destinationPath.js));
 }
 
 

@@ -94,10 +94,10 @@
     </aside>
 
     <main class="main-container">
-        <h1>Winter Wonder</h1>
-        <p>Created by DonColon</p>
-        <p>5 Songs</p>
-        <p>Duration: 1:30 h</p>
+        <h1 id="playlistTitle">Winter Wonder</h1>
+        <p id="playlistOwner">Created by DonColon</p>
+        <p id="numberOfSongs">5 Songs</p>
+        <p id="playlistDuration">Duration: 1:30 h</p>
 
         <div class="table-scroll">
             <table>
@@ -141,16 +141,14 @@
                 <span>3:00</span>
             </div>
             <div class="control-bar">
-                <span class="mdi mdi-36px mdi-skip-backward"></span>
-                <span class="mdi mdi-36px mdi-skip-previous"></span>
-                <span class="mdi mdi-36px mdi-pause-circle-outline"></span>
-                <span class="mdi mdi-36px mdi-play-circle-outline"></span>
-                <span class="mdi mdi-36px mdi-skip-next"></span>
-                <span class="mdi mdi-36px mdi-skip-forward"></span>
+                <span class="mdi mdi-36px mdi-skip-previous" id="previousSong"></span>
+                <span class="mdi mdi-36px mdi-pause-circle-outline" id="pauseButton"></span>
+                <span class="mdi mdi-36px mdi-play-circle-outline" id="playButton"></span>
+                <span class="mdi mdi-36px mdi-skip-next" id="nextSong"></span>
             </div>
             <div class="volume-bar">
                 <span class="mdi mdi-36px mdi-volume-high"></span>
-                <input type="range" name="volume" min="0" max="1" value="0.5" />
+                <vanilla-slider min="20" max="300" value="100" showRange="true"></vanilla-slider>
             </div>
         </div>
     </footer>

@@ -29,14 +29,14 @@
         "build": "gulp"
     },
     "sourcePath": {
-        "scripts": "src/main/scripts/",
-        "styles": "src/main/styles/",
-        "audio": "src/main/resources/audio/",
-        "fonts": "src/main/resources/fonts/",
-        "images": "src/main/resources/images/"
+        "js": "src/app/javascript/",
+        "styles": "src/app/styles/",
+        "audio": "src/app/resources/audio/",
+        "fonts": "src/app/resources/fonts/",
+        "images": "src/app/resources/images/"
     },
     "destinationPath": {
-        "scripts": "dist/js",
+        "js": "dist/js",
         "styles": "dist/css",
         "audio": "dist/audio",
         "fonts": "dist/fonts",
@@ -69,6 +69,7 @@
     },
     "dependencies": {
         "@mdi/font": "^3.8.95",
+        "firebase": "^7.5.0",
         "howler": "^2.1.2"
     }
 }

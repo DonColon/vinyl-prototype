@@ -3,13 +3,12 @@
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
 /*************************************************************************************/
-import './components/components.js';
-
 import config from '../../../application.config.json';
+import '../components/component.js';
 
-import Playlist from './playlist.js';
-import VinylView from './vinyl-view.js';
-import MusicPlayer from './music-player.js';
+import Playlist from './model/playlist.js';
+import VinylView from './view/vinyl-view.js';
+import MusicPlayer from './controller/music-player.js';
 
 
 (function main() {
@@ -22,6 +21,7 @@ import MusicPlayer from './music-player.js';
     fetch('../resources/playlist.json')
         .then(response => response.json())
         .then(playlistInfo => {
+            console.log(playlistInfo);
             const playlist = new Playlist(playlistInfo);
             const view = new VinylView(components, playlist);
             const player = new MusicPlayer(playlist, view);
