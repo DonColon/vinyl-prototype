@@ -7,17 +7,19 @@ class EventDispatcher
 {
     constructor()
     {
-        this.events = {};
+        this.events = new Map();
     }
 
     on(event, listener)
     {
-        (this.events[event] || (this.events[event] = [])).push(listener);
+        (this.events.has(event)) ? 
+            this.events.get(event).push(listener) : this.events.set(event, [listener]);
     }
 
     emit(event, args)
     {
-        (this.events[event] || []).slice(0).forEach(listener => listener(args));
+        if(this.events.has(event))
+            this.events.get(event).slice(0).forEach(listener => listener(args));
     }
 }
 

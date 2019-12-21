@@ -19,41 +19,6 @@ const {sourcePath, destinationPath} = require('./package.json');
 
 
 /* ############################## Gulp Tasks ####################################### */
-function audio()
-{
-    return src(sourcePath.audio + '*')
-        .pipe(newer(destinationPath.audio))
-        .pipe(dest(destinationPath.audio));
-}
-
-function fonts()
-{
-    return src(sourcePath.fonts + '*')
-        .pipe(newer(destinationPath.fonts))
-        .pipe(dest(destinationPath.fonts));
-}
-
-function images()
-{
-    return src(sourcePath.images + '*')
-        .pipe(newer(destinationPath.images))
-        .pipe(imagemin())
-        .pipe(dest(destinationPath.images));
-}
-
-function css()
-{
-    return src(sourcePath.styles + '**/*.scss')
-        .pipe(newer(destinationPath.styles))
-        .pipe(sass())
-        .pipe(minify())
-        .pipe(rename({
-            basename: 'styles',
-            extname: '.min.css'
-        }))
-        .pipe(dest(destinationPath.styles));
-}
-
 function javascript()
 {
     return src(sourcePath.js + 'main.js')
@@ -83,6 +48,41 @@ function javascript()
             extname: '.min.js'
         }))
         .pipe(dest(destinationPath.js));
+}
+
+function css()
+{
+    return src(sourcePath.styles + 'master.scss')
+        .pipe(newer(destinationPath.styles))
+        .pipe(sass())
+        .pipe(minify())
+        .pipe(rename({
+            basename: 'styles',
+            extname: '.min.css'
+        }))
+        .pipe(dest(destinationPath.styles));
+}
+
+function images()
+{
+    return src(sourcePath.images + '*')
+        .pipe(newer(destinationPath.images))
+        .pipe(imagemin())
+        .pipe(dest(destinationPath.images));
+}
+
+function audio()
+{
+    return src(sourcePath.audio + '*')
+        .pipe(newer(destinationPath.audio))
+        .pipe(dest(destinationPath.audio));
+}
+
+function fonts()
+{
+    return src(sourcePath.fonts + '*')
+        .pipe(newer(destinationPath.fonts))
+        .pipe(dest(destinationPath.fonts));
 }
 
 

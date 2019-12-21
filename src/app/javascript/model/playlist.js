@@ -3,7 +3,7 @@
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
 /*************************************************************************************/
-import EventDispatcher from './event-dispatcher.js';
+import EventDispatcher from '../events.js';
 
 
 class Playlist extends EventDispatcher

@@ -5,6 +5,7 @@
 /*************************************************************************************/
 import {Howl, Howler} from 'howler';
 
+
 class MusicPlayer
 {
     constructor(playlist, view)

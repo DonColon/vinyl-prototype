@@ -18,7 +18,7 @@ import MusicPlayer from './controller/music-player.js';
     for(const element of elements)
         components[element.id] = element;
 
-    fetch('../resources/playlist.json')
+    fetch('../playlist.json')
         .then(response => response.json())
         .then(playlistInfo => {
             console.log(playlistInfo);

@@ -31,16 +31,16 @@
     "sourcePath": {
         "js": "src/app/javascript/",
         "styles": "src/app/styles/",
+        "images": "src/app/resources/images/",
         "audio": "src/app/resources/audio/",
-        "fonts": "src/app/resources/fonts/",
-        "images": "src/app/resources/images/"
+        "fonts": "src/app/resources/fonts/"
     },
     "destinationPath": {
         "js": "dist/js",
         "styles": "dist/css",
+        "images": "dist/images",
         "audio": "dist/audio",
-        "fonts": "dist/fonts",
-        "images": "dist/images"
+        "fonts": "dist/fonts"
     },
     "devDependencies": {
         "@atomico/rollup-plugin-import-css": "^1.0.3",

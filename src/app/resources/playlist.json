@@ -16,7 +16,7 @@
             "album": "Dirty Work",
             "year": "2012",
             "genre": "Pop",
-            "filepath": "./resources/audio/time-bomb.mp3"
+            "filepath": "../audio/time-bomb.mp3"
         },
         {
             "track": "1",
@@ -25,7 +25,7 @@
             "album": "Nothing Personal",
             "year": "2009",
             "genre": "Pop",
-            "filepath": "./resources/audio/weightless.mp3"
+            "filepath": "../audio/weightless.mp3"
         },
         {
             "track": "3",
@@ -34,7 +34,7 @@
             "album": "Future Hearts",
             "year": "2015",
             "genre": "Pop",
-            "filepath": "./resources/audio/somethings-gotta-give.mp3"
+            "filepath": "../audio/somethings-gotta-give.mp3"
         }
     ],
     "visibility": true
