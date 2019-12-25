@@ -1,99 +1,96 @@
 class HttpClient {
-
     constructor(options = {}) {
         this._defaultOptions = options;
     }
 
     async post(url, body, headers = {}) {
-        const overridenHeaders = {...this._defaultOptions.headers, ...headers};
+        const overridenHeaders = { ...this._defaultOptions.headers, ...headers };
 
         const options = {
             method: 'POST',
             headers: overridenHeaders,
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         };
 
-        const overridenOptions = {...this._defaultOptions, ...options};
-    
-        const response = await fetch(url, overridenOptions),
-            data = await response.json();
+        const overridenOptions = { ...this._defaultOptions, ...options };
+
+        const response = await fetch(url, overridenOptions);
+        const data = await response.json();
 
         return data;
     }
 
     async get(url, headers = {}) {
-        const overridenHeaders = {...this._defaultOptions.headers, ...headers};
+        const overridenHeaders = { ...this._defaultOptions.headers, ...headers };
 
         const options = {
             method: 'GET',
-            headers: overridenHeaders
+            headers: overridenHeaders,
         };
 
-        const overridenOptions = {...this._defaultOptions, ...options};
+        const overridenOptions = { ...this._defaultOptions, ...options };
 
-        const response = await fetch(url, overridenOptions),
-            data = await response.json();
+        const response = await fetch(url, overridenOptions);
+        const data = await response.json();
 
         return data;
     }
 
     async put(url, body, headers = {}) {
-        const overridenHeaders = {...this._defaultOptions.headers, ...headers};
+        const overridenHeaders = { ...this._defaultOptions.headers, ...headers };
 
         const options = {
             method: 'PUT',
             headers: overridenHeaders,
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         };
 
-        const overridenOptions = {...this._defaultOptions, ...options};
-    
-        const response = await fetch(url, overridenOptions),
-            data = await response.json();
-    
+        const overridenOptions = { ...this._defaultOptions, ...options };
+
+        const response = await fetch(url, overridenOptions);
+        const data = await response.json();
+
         return data;
     }
 
     async patch(url, body, headers = {}) {
-        const overridenHeaders = {...this._defaultOptions.headers, ...headers};
+        const overridenHeaders = { ...this._defaultOptions.headers, ...headers };
 
         const options = {
             method: 'PATCH',
             headers: overridenHeaders,
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         };
 
-        const overridenOptions = {...this._defaultOptions, ...options};
+        const overridenOptions = { ...this._defaultOptions, ...options };
 
-        const response = await fetch(url, overridenOptions),
-            data = await response.json();
+        const response = await fetch(url, overridenOptions);
+        const data = await response.json();
 
         return data;
     }
 
     async delete(url, headers = {}) {
-        const overridenHeaders = {...this._defaultOptions.headers, ...headers};
+        const overridenHeaders = { ...this._defaultOptions.headers, ...headers };
 
         const options = {
             method: 'DELETE',
-            headers: overridenHeaders
+            headers: overridenHeaders,
         };
 
-        const overridenOptions = {...this._defaultOptions, ...options};
-    
+        const overridenOptions = { ...this._defaultOptions, ...options };
+
         fetch(url, overridenOptions);
     }
-    
 }
 
 class HttpClientBuilder {
-
     constructor() {
         this._defaultOptions = {
             headers: {
-                'Accept': 'application/json',
+                Accept: 'application/json',
                 'Content-Type': 'application/json',
-            }
+            },
         };
     }
 
@@ -160,12 +157,10 @@ class HttpClientBuilder {
     build() {
         return new HttpClient(this._defaultOptions);
     }
-
 }
 
 
 class UrlBuilder {
-
     constructor(hostUrl) {
         this._url = new URL(hostUrl);
     }
@@ -209,7 +204,6 @@ class UrlBuilder {
     build() {
         return new URL(this._url);
     }
-
 }
 
 export { HttpClientBuilder, UrlBuilder };

@@ -19,8 +19,7 @@ const {sourcePath, destinationPath} = require('./package.json');
 
 
 /* ############################## Gulp Tasks ####################################### */
-function javascript()
-{
+function javascript() {
     return src(sourcePath.js + 'main.js')
         .pipe(newer(destinationPath.js))
         .pipe(rollup({
@@ -50,8 +49,7 @@ function javascript()
         .pipe(dest(destinationPath.js));
 }
 
-function css()
-{
+function css() {
     return src(sourcePath.styles + 'master.scss')
         .pipe(newer(destinationPath.styles))
         .pipe(sass())
@@ -63,23 +61,20 @@ function css()
         .pipe(dest(destinationPath.styles));
 }
 
-function images()
-{
+function images() {
     return src(sourcePath.images + '*')
         .pipe(newer(destinationPath.images))
         .pipe(imagemin())
         .pipe(dest(destinationPath.images));
 }
 
-function audio()
-{
+function audio() {
     return src(sourcePath.audio + '*')
         .pipe(newer(destinationPath.audio))
         .pipe(dest(destinationPath.audio));
 }
 
-function fonts()
-{
+function fonts() {
     return src(sourcePath.fonts + '*')
         .pipe(newer(destinationPath.fonts))
         .pipe(dest(destinationPath.fonts));

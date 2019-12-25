@@ -1,15 +1,13 @@
-/*************************************************************************************/
+/** ********************************************************************************** */
 /* Vinyl - My own web music player                                                   */
 /* Copyright 2019 Dardan Rrafshi                                                     */
 /* Licensed under Apache 2.0 (https://github.com/DonColon/vinyl/blob/master/LICENSE) */
-/*************************************************************************************/
-import EventDispatcher from '../events.js';
+/** ********************************************************************************** */
+import EventDispatcher from '../core/events';
 
 
-class Playlist extends EventDispatcher
-{
-    constructor(playlistInfo)
-    {
+class Playlist extends EventDispatcher {
+    constructor(playlistInfo) {
         super();
         this._name = playlistInfo.name;
         this._creationDate = playlistInfo.creationDate;
@@ -20,68 +18,55 @@ class Playlist extends EventDispatcher
     }
 
 
-    get name()
-    {
+    get name() {
         return this._name;
     }
 
-    set name(name)
-    {
+    set name(name) {
         this._name = name;
     }
 
-    get creationDate()
-    {
+    get creationDate() {
         return this._creationDate;
     }
 
-    set creationDate(creationDate)
-    {
+    set creationDate(creationDate) {
         this._creationDate = creationDate;
     }
 
-    get owner()
-    {
+    get owner() {
         return this._owner;
     }
 
-    set owner(owner)
-    {
+    set owner(owner) {
         this._owner = owner;
     }
 
-    get visibility()
-    {
+    get visibility() {
         return this._visibility;
     }
 
-    set visibility(visibility)
-    {
+    set visibility(visibility) {
         this._visibility = visibility;
     }
 
-    get songs()
-    {
+    get songs() {
         return this._songs.slice(0);
     }
 
-    addSong(song)
-    {
+    addSong(song) {
         this._songs.push(song);
     }
 
-    removeSong(index)
-    {
+    removeSong(index) {
         this._songs.splice(index, 1);
     }
 
-    get selectedIndex()
-    {
+    get selectedIndex() {
         return this._selectedIndex;
     }
 
-    set selectedIndex(index)
-    {
+    set selectedIndex(index) {
         this._selectedIndex = index;
         this.emit('selectedIndexChanged', index);
     }

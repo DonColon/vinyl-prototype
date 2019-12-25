@@ -1,46 +1,50 @@
 const obiectum = {
 
     equals(value = null, other = null) {
-        if(value === other) {
+        if (value === other) {
             return true;
         }
 
-        if(value === null || other === null) {
+        if (value === null || other === null) {
             return false;
         }
 
-        if(typeof value !== 'object' && typeof other !== 'object') {
+        if (typeof value !== 'object' && typeof other !== 'object') {
             return value === other;
         }
 
         const valueKeys = Object.keys(value);
         const otherKeys = Object.keys(other);
 
-        if(valueKeys.length !== otherKeys.length) {
+        if (valueKeys.length !== otherKeys.length) {
             return false;
         }
 
-        return valueKeys.every(key => this.equals(value[key], other[key]));
+        return valueKeys.every((key) => this.equals(value[key], other[key]));
     },
 
     freeze(value = {}) {
-        for(const key of Object.keys(value)) {
-           if(value[key] instanceof Object) {
-               value[key] = this.freeze(value[key]);
-           } 
+        const object = value;
+
+        for (const key of Object.keys(value)) {
+            if (value[key] instanceof Object) {
+                object[key] = this.freeze(value[key]);
+            }
         }
 
-        return Object.freeze(value);
+        return Object.freeze(object);
     },
 
     merge(target = {}, ...sources) {
-        if(this.isMergeableObject(target)) {
-            for(const source of sources) {
-                if(this.isMergeableObject(source)) {
-                    for(const key of Object.keys(source)) {
-                        target[key] = (target[key] instanceof Object && source[key] instanceof Object) ? 
-                            this.merge(target[key], source[key]) : 
-                            source[key];
+        const object = target;
+
+        if (this.isMergeableObject(target)) {
+            for (const source of sources) {
+                if (this.isMergeableObject(source)) {
+                    for (const key of Object.keys(source)) {
+                        object[key] = (target[key] instanceof Object && source[key] instanceof Object)
+                            ? this.merge(target[key], source[key])
+                            : source[key];
                     }
                 }
             }
@@ -50,16 +54,14 @@ const obiectum = {
     },
 
     navigate(value = {}, path = '') {
-        return path.split('/').reduce((previousValue, currentValue) => {
-            return previousValue && previousValue[currentValue];
-        }, value);
+        return path.split('/').reduce((previousValue, currentValue) => previousValue && previousValue[currentValue], value);
     },
 
-    select(value = {}, ...selection) {
+    select(value = {}, ...selectedKeys) {
         const result = {};
 
-        for(const key of selection) {
-            if(this.has(value, key)) {
+        for (const key of selectedKeys) {
+            if (this.has(value, key)) {
                 result[key] = value[key];
             }
         }
@@ -73,7 +75,7 @@ const obiectum = {
 
         const valueKeys = this.keys(value, sorted);
 
-        for(const key of valueKeys) {
+        for (const key of valueKeys) {
             values.push(value[key]);
         }
 
@@ -82,7 +84,7 @@ const obiectum = {
 
     keys(value = {}, sorted = false) {
         const valueKeys = Object.keys(value);
-        if(sorted) valueKeys.sort();
+        if (sorted) valueKeys.sort();
         return valueKeys;
     },
 
@@ -118,7 +120,7 @@ const obiectum = {
 
     isUndefined(value) {
         return typeof value === 'undefined';
-    }
+    },
 
 };
 
