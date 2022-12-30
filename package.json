@@ -64,7 +64,7 @@
         "imagemin-jpegtran": "^6.0.0",
         "imagemin-optipng": "^7.0.0",
         "imagemin-svgo": "^7.0.0",
-        "mocha": "^6.2.0",
+        "mocha": "^10.2.0",
         "nyc": "^14.1.1",
         "rollup": "^1.21.2",
         "rollup-plugin-html": "^0.2.1",
